@@ -17,7 +17,8 @@
     "reference",
     "tools.json",
     "INSTRUCTIONS.md",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "build:tools": "node src/cli.js tools > tools.json",
@@ -30,6 +31,6 @@
   "dependencies": {
     "yaml": "^2.5.0"
   },
-  "license": "UNLICENSED",
+  "license": "MIT",
   "private": true
 }

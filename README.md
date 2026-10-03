@@ -81,3 +81,7 @@ npx pzdesk call POST /billing/clients -d '{"name":"Acme"}' --yes  # sends it
 
 - After the helpdesk API changes: `npm run sync` (refresh your local `openapi.yaml`), `npm run build:tools`, `npm test`.
 - `npm test` checks the tools against a local mock server, and checks that every operation, request field, enum value and query parameter named in `reference/playbooks.md` exists in the helpdesk's OpenAPI file, so the playbooks cannot drift from the API. These checks need the local `openapi.yaml` copy (or `PZDESK_SPEC`) and are skipped, with a message saying so, when there is none.
+
+## License
+
+[MIT](LICENSE). This license covers the code, instructions and playbooks in this repository. It does not cover your helpdesk software or its API description, which this repository does not contain.
