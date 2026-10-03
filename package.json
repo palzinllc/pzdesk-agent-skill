@@ -1,0 +1,35 @@
+{
+  "name": "pzdesk-agent-skill",
+  "version": "1.0.0",
+  "description": "Skill for AI bots (Grok or any function-calling bot) to manage a PzDesk helpdesk through its documented REST API",
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./tools.json": "./tools.json",
+    "./instructions": "./INSTRUCTIONS.md"
+  },
+  "bin": {
+    "pzdesk": "./src/cli.js"
+  },
+  "files": [
+    "src",
+    "reference",
+    "tools.json",
+    "INSTRUCTIONS.md",
+    "README.md"
+  ],
+  "scripts": {
+    "build:tools": "node src/cli.js tools > tools.json",
+    "sync": "node src/cli.js sync",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "yaml": "^2.5.0"
+  },
+  "license": "UNLICENSED",
+  "private": true
+}

@@ -1,0 +1,100 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "pzdesk_find_operations",
+      "description": "Find PzDesk API operations. Call with no arguments to list the API areas. Filter by area (for example \"Conversations\", \"Clients\") and/or words from the operation name. Always find and describe an operation before calling it; never invent endpoints.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "area": {
+            "type": "string",
+            "description": "API area name, for example Conversations, Customers, Clients, Time tracking."
+          },
+          "search": {
+            "type": "string",
+            "description": "Words that must all appear in the method, path, summary or area, for example \"time entries\"."
+          }
+        }
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "pzdesk_describe_operation",
+      "description": "Show everything needed to call one operation: parameters, request body fields with types, required flags, allowed values and descriptions, the responses, and whether the user must confirm first.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "method": {
+            "type": "string",
+            "enum": [
+              "GET",
+              "POST",
+              "PUT",
+              "DELETE"
+            ]
+          },
+          "path": {
+            "type": "string",
+            "description": "Path exactly as documented, for example /billing/clients/{id}."
+          }
+        },
+        "required": [
+          "method",
+          "path"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "pzdesk_call",
+      "description": "Call a documented PzDesk operation. GET requests run immediately. Every other method (POST, PUT, DELETE) is NOT sent unless confirmed is true, and you may only set confirmed to true after the human user has approved that exact action in this conversation. Ids must come from earlier responses or the user, never guessed.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "method": {
+            "type": "string",
+            "enum": [
+              "GET",
+              "POST",
+              "PUT",
+              "DELETE"
+            ]
+          },
+          "path": {
+            "type": "string",
+            "description": "Path exactly as documented, with the {placeholders} kept, for example /billing/clients/{id}."
+          },
+          "path_params": {
+            "type": "object",
+            "description": "Values for the {placeholders} in the path, for example {\"id\": 12}."
+          },
+          "query": {
+            "type": "object",
+            "description": "Query string parameters, for example {\"page\": 1, \"perPage\": 15}."
+          },
+          "body": {
+            "type": "object",
+            "description": "JSON request body, using only the documented fields."
+          },
+          "confirmed": {
+            "type": "boolean",
+            "description": "true only after the user approved this exact non-GET action. Default false."
+          },
+          "save_to": {
+            "type": "string",
+            "description": "File path to store CSV or PDF downloads."
+          }
+        },
+        "required": [
+          "method",
+          "path"
+        ]
+      }
+    }
+  }
+]

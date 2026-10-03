@@ -1,0 +1,7 @@
+node_modules/
+*.log
+.env
+.DS_Store
+*.tgz
+# the helpdesk API description is not part of this repository: npm run sync creates a local copy
+openapi.yaml
